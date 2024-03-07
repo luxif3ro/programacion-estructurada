@@ -13,6 +13,5 @@ int main()
 }
 
 void _duplicarNumero(int *numeroDuplicado){
-    printf("este es el numero que me diste > %d \n",numero);
-    printf("este es el numero duplicaado > %d \n",*numeroDuplicado);
+    printf("este es el numero duplicado es > %d \n",(*numeroDuplicado*2));
 }
