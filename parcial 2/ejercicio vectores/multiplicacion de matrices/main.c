@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void sumaMatrices(int **primerMatriz, int **segundaMatriz, int ancho, int altura);
+void multiplicacionMatrices(int **primerMatriz, int **segundaMatriz, int ancho, int altura);
 
 int main()
 {
@@ -19,12 +19,14 @@ int main()
     printf("Ingresa la altura de la segunda matriz: ");
     scanf("%d", &alturaSegundaMatriz);
 
-    if (anchoPrimeraMatriz <= 0 || alturaPrimeraMatriz <= 0 || anchoSegundaMatriz <= 0 || alturaSegundaMatriz <= 0) {
+    if (anchoPrimeraMatriz <= 0 || alturaPrimeraMatriz <= 0 || anchoSegundaMatriz <= 0 || alturaSegundaMatriz <= 0)
+    {
         printf("Las dimensiones de la matriz deben ser positivas.\n");
         return 1;
     }
 
-    if (anchoPrimeraMatriz != anchoSegundaMatriz || alturaPrimeraMatriz != alturaSegundaMatriz) {
+    if (anchoPrimeraMatriz != anchoSegundaMatriz || alturaPrimeraMatriz != alturaSegundaMatriz)
+    {
         printf("Las dimensiones de las matrices deben coincidir para su suma.\n");
         return 1;
     }
@@ -34,22 +36,26 @@ int main()
 
     int **primerMatriz = (int **)malloc(ancho * sizeof(int *));
     int **segundaMatriz = (int **)malloc(ancho * sizeof(int *));
-    for (int i = 0; i < ancho; i++) {
+    for (int i = 0; i < ancho; i++)
+    {
         primerMatriz[i] = (int *)malloc(altura * sizeof(int));
         segundaMatriz[i] = (int *)malloc(altura * sizeof(int));
     }
 
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < altura; j++) {
+    for (int i = 0; i < ancho; i++)
+    {
+        for (int j = 0; j < altura; j++)
+        {
             primerMatriz[i][j] = rand() % 101;
             segundaMatriz[i][j] = rand() % 101;
         }
     }
 
-    sumaMatrices(primerMatriz, segundaMatriz, ancho, altura);
+    multiplicacionMatrices(primerMatriz, segundaMatriz, ancho, altura);
 
     // Liberar la memoria asignada
-    for (int i = 0; i < ancho; i++) {
+    for (int i = 0; i < ancho; i++)
+    {
         free(primerMatriz[i]);
         free(segundaMatriz[i]);
     }
@@ -59,45 +65,55 @@ int main()
     return 0;
 }
 
-void sumaMatrices(int **primerMatriz, int **segundaMatriz, int ancho, int altura)
+void multiplicacionMatrices(int **primerMatriz, int **segundaMatriz, int ancho, int altura)
 {
     int **matrizResultado = (int **)malloc(ancho * sizeof(int *));
-    for (int i = 0; i < ancho; i++) {
+    for (int i = 0; i < ancho; i++)
+    {
         matrizResultado[i] = (int *)malloc(altura * sizeof(int));
     }
 
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < altura; j++) {
-            matrizResultado[i][j] = primerMatriz[i][j] + segundaMatriz[i][j];
+    for (int i = 0; i < ancho; i++)
+    {
+        for (int j = 0; j < altura; j++)
+        {
+            matrizResultado[i][j] = primerMatriz[i][j] * segundaMatriz[i][j];
         }
     }
 
     printf("Primera matriz:\n");
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < altura; j++) {
+    for (int i = 0; i < ancho; i++)
+    {
+        for (int j = 0; j < altura; j++)
+        {
             printf("%d ", primerMatriz[i][j]);
         }
         printf("\n");
     }
 
     printf("\nSegunda matriz:\n");
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < altura; j++) {
+    for (int i = 0; i < ancho; i++)
+    {
+        for (int j = 0; j < altura; j++)
+        {
             printf("%d ", segundaMatriz[i][j]);
         }
         printf("\n");
     }
 
     printf("\nMatriz resultado:\n");
-    for (int i = 0; i < ancho; i++) {
-        for (int j = 0; j < altura; j++) {
+    for (int i = 0; i < ancho; i++)
+    {
+        for (int j = 0; j < altura; j++)
+        {
             printf("%d ", matrizResultado[i][j]);
         }
         printf("\n");
     }
 
     // Liberar la memoria asignada
-    for (int i = 0; i < ancho; i++) {
+    for (int i = 0; i < ancho; i++)
+    {
         free(matrizResultado[i]);
     }
     free(matrizResultado);
