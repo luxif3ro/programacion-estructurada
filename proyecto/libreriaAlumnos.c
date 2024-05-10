@@ -49,6 +49,7 @@ typedef struct Estudiante
  *          Si ocurre algún error durante la obtención del tamaño, devuelve un valor negativo.
  * 
  * @author Jesús Salvador García López
+ *  
  */
 int _obtenerTamanoArchivo(FILE *archivo) {
     int tamano;
