@@ -34,7 +34,7 @@ Estudiante *_creacionDeEstructura(FILE *archivo);
  * @return Un puntero a la estructura de estudiantes llena.
  *         Si ocurre algún error, devuelve NULL.
  */
-Estudiante *_llenadoDeEstructura(FILE *archivo, Estudiante *alumnos);
+void _llenadoDeEstructura(FILE *archivo, Estudiante *alumnos);
 
 /**
  * Imprime las calificaciones de los estudiantes en formato tabular.
@@ -42,14 +42,9 @@ Estudiante *_llenadoDeEstructura(FILE *archivo, Estudiante *alumnos);
  * @param alumnos Puntero al arreglo de estudiantes.
  * @param tamaño Tamaño del arreglo de estudiantes.
  */
-void _impresionDeCalificaciones(Estudiante *alumnos, int tamaño);
+void _impresionDeCalificaciones(Estudiante *alumnos);
 
-/**
- * Pregunta al usuario si desea continuar o salir del programa.
- * 
- * @param alumnos Puntero al arreglo de estudiantes.
- */
-void _preguntaDeControl(Estudiante *alumnos);
+void _calcularCalificacionFinal(Estudiante *alumnos,FILE *archivo);
 
 /**
  * Calcula y muestra el promedio general del grupo sin redondear.
